@@ -1,73 +1,155 @@
-# Welcome to your Lovable project
+<div align="center">
 
-## Project info
+# 🍳 Kitchen Coach
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+### *Master the Art of Cooking — One Class at a Time*
 
-## How can I edit this code?
+![Kitchen Coach Banner](public/banner.jpg)
 
-There are several ways of editing your application.
+[![React](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Lovable Cloud](https://img.shields.io/badge/Lovable_Cloud-Backend-FF6B6B?style=for-the-badge)](https://lovable.dev/)
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+**Kitchen Coach** is a modern cooking class booking platform where aspiring chefs can discover courses, enroll in batches, and track their culinary journey.
 
-Changes made via Lovable will be committed automatically to this repo.
+[🌐 Live Demo](https://id-preview--b4b04923-8c07-4b6a-b729-75a9e2e99b37.lovable.app) · [🐛 Report Bug](https://github.com/) · [✨ Request Feature](https://github.com/)
 
-**Use your preferred IDE**
+</div>
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## ✨ Features
 
-Follow these steps:
+| Feature | Description |
+|---------|-------------|
+| 🎓 **Course Catalog** | Browse a rich collection of cooking courses with categories, pricing & details |
+| 📅 **Batch Booking** | Enroll in scheduled batches with real-time seat availability |
+| 👤 **User Auth** | Secure signup, login & profile management |
+| 🛡️ **Admin Dashboard** | Manage courses, batches & bookings with role-based access |
+| 📱 **Responsive Design** | Beautiful experience on desktop, tablet & mobile |
+| 🔒 **Row-Level Security** | Data protection with fine-grained access policies |
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+---
+
+## 🛠️ Tech Stack
+
+<div align="center">
+
+| Layer | Technology |
+|-------|-----------|
+| **Frontend** | React 18 · JSX · Tailwind CSS · shadcn/ui |
+| **Build Tool** | Vite 5 |
+| **Routing** | React Router v6 |
+| **State** | TanStack React Query |
+| **Backend** | Lovable Cloud (Supabase) |
+| **Auth** | Email/Password with role-based access |
+
+</div>
+
+---
+
+## 📁 Project Structure
+
+```
+kitchen-coach/
+├── public/              # Static assets
+├── src/
+│   ├── components/      # Reusable UI components
+│   │   └── ui/          # shadcn/ui components
+│   ├── contexts/        # Auth context provider
+│   ├── hooks/           # Custom React hooks
+│   ├── integrations/    # Supabase client & types
+│   ├── lib/             # Utility functions
+│   └── pages/           # Route pages
+│       ├── Index.jsx        # Landing page
+│       ├── Courses.jsx      # Course catalog
+│       ├── CourseDetail.jsx  # Course details & booking
+│       ├── MyBookings.jsx   # User bookings
+│       ├── AdminDashboard.jsx # Admin panel
+│       ├── Login.jsx        # Sign in
+│       └── Register.jsx     # Sign up
+├── supabase/            # Database config & migrations
+└── package.json
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18+)
+- [npm](https://www.npmjs.com/) or [bun](https://bun.sh/)
+
+### Installation
+
+```bash
+# 1. Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# 2. Navigate to project
+cd kitchen-coach
 
-# Step 3: Install the necessary dependencies.
-npm i
+# 3. Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 4. Set up environment variables
+# Create a .env file with:
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_PUBLISHABLE_KEY=your_anon_key
+
+# 5. Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be running at **http://localhost:5173** 🎉
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 📊 Database Schema
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+┌──────────┐     ┌──────────┐     ┌──────────┐
+│ courses  │────▶│ batches  │◀────│ bookings │
+│          │     │          │     │          │
+│ id       │     │ id       │     │ id       │
+│ title    │     │ course_id│     │ batch_id │
+│ price    │     │ schedule │     │ user_id  │
+│ category │     │ capacity │     │ status   │
+│ duration │     │ instructor│    │ payment  │
+└──────────┘     └──────────┘     └──────────┘
+                                       │
+┌──────────┐     ┌──────────┐          │
+│ profiles │     │user_roles│          │
+│          │     │          │          │
+│ user_id  │     │ user_id  │◀─────────┘
+│ full_name│     │ role     │
+│ email    │     └──────────┘
+└──────────┘
+```
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 👥 User Roles
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+| Role | Permissions |
+|------|------------|
+| **User** | Browse courses, book batches, view own bookings |
+| **Admin** | Full CRUD on courses & batches, manage all bookings, view dashboard stats |
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## 📄 License
 
-## Can I connect a custom domain to my Lovable project?
+This project is open source and available under the [MIT License](LICENSE).
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+<div align="center">
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+**Built with ❤️ using [Lovable](https://lovable.dev)**
+
+</div>

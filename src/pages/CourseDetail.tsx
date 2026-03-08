@@ -20,7 +20,7 @@ const CourseDetail = () => {
   const { data: course, isLoading } = useQuery({
     queryKey: ["course", id],
     queryFn: async () => {
-      const { data, error } = await supabase.from("courses").select("*").eq("id", id!).single();
+      const { data, error } = await supabase.from("courses").select("*").eq("id", id!).maybeSingle();
       if (error) throw error;
       return data;
     },
